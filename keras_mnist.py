@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 from collections import deque
 from tensorflow.keras.datasets import mnist
-from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.models import Sequential, load_model
 from tensorflow.keras.layers import Dense, Conv2D, Flatten
 import tensorflow as tf
@@ -24,8 +23,6 @@ x_train = x_train.astype('float32')
 x_test = x_test.astype('float32')
 x_train /= 255
 x_test /= 255
-y_train = to_categorical(y_train)
-y_test = to_categorical(y_test)
 
 if not doTraining:
     # Load the pre-trained model
@@ -40,7 +37,7 @@ else:
     model.add(Conv2D(32, kernel_size=3, activation='relu'))
     model.add(Flatten())
     model.add(Dense(10, activation='softmax'))
-    model.compile(optimizer=tf.optimizers.RMSprop(0.001), loss='categorical_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer=tf.optimizers.RMSprop(0.001), loss='sparse_categorical_crossentropy', metrics=['accuracy'])
     model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=10)
     model.save(model_file)
     model = load_model(model_file)
