@@ -120,7 +120,6 @@ while True:
             plt.subplot(1, 2, 1)
             plt.imshow(combined_frame, cmap="gray")
             plt.axis("off")
-
             plt.subplot(1, 2, 2)
             plt.plot(tf.nn.softmax(prediction[out_p_filt][0]))
             plt.legend([str(i) for i in range(10)], loc="upper left")

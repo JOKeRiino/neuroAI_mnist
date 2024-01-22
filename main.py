@@ -1,8 +1,8 @@
 import subprocess
 
 
-def main(name):
-    cnn = False  # Set this to "False" to run the Nengo SNN
+def main():
+    cnn = True # Set this to "False" to run the Nengo SNN
 
     # If you want to train the model, set doTraining=True in the corresponding file.
 
@@ -13,4 +13,4 @@ def main(name):
 
 
 if __name__ == '__main__':
-    main('PyCharm')
+    main()

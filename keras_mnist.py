@@ -1,11 +1,10 @@
-import os
 import cv2
 import numpy as np
 from collections import deque
-from keras.datasets import mnist
+from tensorflow.keras.datasets import mnist
 from tensorflow.keras.utils import to_categorical
-from keras.models import Sequential, load_model
-from keras.layers import Dense, Conv2D, Flatten
+from tensorflow.keras.models import Sequential, load_model
+from tensorflow.keras.layers import Dense, Conv2D, Flatten
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
@@ -91,7 +90,7 @@ while True:
             plt.imshow(combined_frame, cmap="gray")
             plt.axis("off")
             plt.subplot(1, 2, 2)
-            y_positions = range(len(prediction[0]))  # This will be 0, 1, 2, ..., 9
+            y_positions = range(len(prediction[0]))
             plt.barh(y_positions, prediction[0], align="center")
             plt.yticks(y_positions, [str(i) for i in range(10)])
             plt.xlabel("Probability")
